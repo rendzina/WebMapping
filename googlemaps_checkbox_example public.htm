@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<!-- A1136 Spatial Data and the Internet - Example Google Map showing use of check boxes to load external KML files. S.Hallett -->
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+ html { height: 100% }
+ body { height: 100%; margin: 20px; padding: 0px }
+</style>
+<script src="http://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE"></script>
+<script>
+var map;
+var soils;
+var layers = {};
+layers.names = {};
+layers.files = [
+  new google.maps.KmlLayer('http://public.cranfield.ac.uk/ss01shh/SDI/25k.kml')
+];
+layers.names = ["25k_Soilmaps"];
+
+// Layer Manager code - allows efficient use of multiple layers
+function toggleLayer(lyrName){
+  var names = layers.names;
+  var found = false;
+  for (i in names){
+    if(lyrName === names[i]){
+      found = true;
+      if (document.getElementById(layers.names[i]).checked){
+        layers.files[i].setMap(map);
+      } else {
+        layers.files[i].setMap(null);
+      }
+      break;
+    }
+  }
+  if (!found){alert("error: toogleLayer(" + lyrName + ") : layer not found");}
+}
+
+function initialise() {
+    var centerpoint = new google.maps.LatLng(52.516148,-1.278859);
+    var mapOptions = {
+      zoom: 6,
+      center: centerpoint,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    document.getElementById("25k_Soilmaps").checked=false;
+}
+
+// Note this code does NOT use the usual initMap() function- but this approach instead. It has some advantages
+// When you get to this bit ask me and I will explain!
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  }
+  else {
+    window.onload = function() {
+      oldonload();
+      func();
+    }
+  }
+}
+// The next line initialises the map, note the command is not in a function
+// so is executed when the browser gets to this line. The line calls the
+// function addLoadEvent
+addLoadEvent(initialise);
+</script>
+</head>
+<body>
+<h1>A1136 Web Mapping</h1>
+<div id="map_canvas" style="width: 700px; height: 400px"></div><hr />
+<form name="frmToc">
+  <input type='checkbox' name='25k_Soilmaps' id='25k_Soilmaps' onClick='toggleLayer(this.name)'/>1:25k Soil Maps<br />
+</form>
+
+</body>
+</html>
