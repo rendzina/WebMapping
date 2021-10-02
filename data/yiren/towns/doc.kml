@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Towns.shp</name>
+	<Schema name="Towns" id="S_Towns_S">
+		<SimpleField type="string" name="Town"><displayName>&lt;b&gt;Town&lt;/b&gt;</displayName>
+</SimpleField>
+		<SimpleField type="long" name="Easting"><displayName>&lt;b&gt;Easting&lt;/b&gt;</displayName>
+</SimpleField>
+		<SimpleField type="long" name="Northing"><displayName>&lt;b&gt;Northing&lt;/b&gt;</displayName>
+</SimpleField>
+	</Schema>
+	<Style id="normPointStyle">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+			<text><![CDATA[<table border="0">
+  <tr><td><b>Town</b></td><td>$[Towns/Town]</td></tr>
+  <tr><td><b>Easting</b></td><td>$[Towns/Easting]</td></tr>
+  <tr><td><b>Northing</b></td><td>$[Towns/Northing]</td></tr>
+</table>
+]]></text>
+		</BalloonStyle>
+	</Style>
+	<StyleMap id="pointStyleMap">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#normPointStyle</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#hlightPointStyle</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="hlightPointStyle">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+			<text><![CDATA[<table border="0">
+  <tr><td><b>Town</b></td><td>$[Towns/Town]</td></tr>
+  <tr><td><b>Easting</b></td><td>$[Towns/Easting]</td></tr>
+  <tr><td><b>Northing</b></td><td>$[Towns/Northing]</td></tr>
+</table>
+]]></text>
+		</BalloonStyle>
+	</Style>
+	<Folder id="layer 0">
+		<name>Towns</name>
+		<Placemark>
+			<name>Cowes</name>
+			<styleUrl>#pointStyleMap</styleUrl>
+			<Style id="inline">
+				<IconStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</IconStyle>
+				<LineStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</LineStyle>
+				<PolyStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</PolyStyle>
+			</Style>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Towns_S">
+					<SimpleData name="Town">Cowes</SimpleData>
+					<SimpleData name="Easting">449620</SimpleData>
+					<SimpleData name="Northing">96040</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>-1.297834655046122,50.7618380143994,46.7671571765095</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Newport</name>
+			<styleUrl>#pointStyleMap</styleUrl>
+			<Style id="inline">
+				<IconStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</IconStyle>
+				<LineStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</LineStyle>
+				<PolyStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</PolyStyle>
+			</Style>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Towns_S">
+					<SimpleData name="Town">Newport</SimpleData>
+					<SimpleData name="Easting">450320</SimpleData>
+					<SimpleData name="Northing">89360</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>-1.28882036325741,50.70171158053979,46.6796205015853</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Ryde</name>
+			<styleUrl>#pointStyleMap</styleUrl>
+			<Style id="inline">
+				<IconStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</IconStyle>
+				<LineStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</LineStyle>
+				<PolyStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</PolyStyle>
+			</Style>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Towns_S">
+					<SimpleData name="Town">Ryde</SimpleData>
+					<SimpleData name="Easting">459540</SimpleData>
+					<SimpleData name="Northing">92540</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>-1.157764650672966,50.72943603707097,46.54744975920767</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Bembridge</name>
+			<styleUrl>#pointStyleMap</styleUrl>
+			<Style id="inline">
+				<IconStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</IconStyle>
+				<LineStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</LineStyle>
+				<PolyStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</PolyStyle>
+			</Style>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Towns_S">
+					<SimpleData name="Town">Bembridge</SimpleData>
+					<SimpleData name="Easting">465180</SimpleData>
+					<SimpleData name="Northing">87740</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>-1.078710176804072,50.68567236425498,46.38990966137499</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Brading</name>
+			<styleUrl>#pointStyleMap</styleUrl>
+			<Style id="inline">
+				<IconStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</IconStyle>
+				<LineStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</LineStyle>
+				<PolyStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</PolyStyle>
+			</Style>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Towns_S">
+					<SimpleData name="Town">Brading</SimpleData>
+					<SimpleData name="Easting">460860</SimpleData>
+					<SimpleData name="Northing">86980</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>-1.139979051997921,50.67930575557374,46.46067404933274</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>East Cowes</name>
+			<styleUrl>#pointStyleMap</styleUrl>
+			<Style id="inline">
+				<IconStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</IconStyle>
+				<LineStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</LineStyle>
+				<PolyStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</PolyStyle>
+			</Style>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Towns_S">
+					<SimpleData name="Town">East Cowes</SimpleData>
+					<SimpleData name="Easting">450700</SimpleData>
+					<SimpleData name="Northing">95640</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>-1.282578249895532,50.75814810086041,46.74313005059958</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Sandown</name>
+			<styleUrl>#pointStyleMap</styleUrl>
+			<Style id="inline">
+				<IconStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</IconStyle>
+				<LineStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</LineStyle>
+				<PolyStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</PolyStyle>
+			</Style>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Towns_S">
+					<SimpleData name="Town">Sandown</SimpleData>
+					<SimpleData name="Easting">459940</SimpleData>
+					<SimpleData name="Northing">84240</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>-1.153441807410935,50.65476361257272,46.44647011812776</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Shanklin</name>
+			<styleUrl>#pointStyleMap</styleUrl>
+			<Style id="inline">
+				<IconStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</IconStyle>
+				<LineStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</LineStyle>
+				<PolyStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</PolyStyle>
+			</Style>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Towns_S">
+					<SimpleData name="Town">Shanklin</SimpleData>
+					<SimpleData name="Easting">458600</SimpleData>
+					<SimpleData name="Northing">81260</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>-1.172865884000085,50.62810398402229,46.43705518823117</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Totland</name>
+			<styleUrl>#pointStyleMap</styleUrl>
+			<Style id="inline">
+				<IconStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</IconStyle>
+				<LineStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</LineStyle>
+				<PolyStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</PolyStyle>
+			</Style>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Towns_S">
+					<SimpleData name="Town">Totland</SimpleData>
+					<SimpleData name="Easting">433360</SimpleData>
+					<SimpleData name="Northing">87440</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>-1.529139996390265,50.68566323522889,46.96247643046081</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Ventnor</name>
+			<styleUrl>#pointStyleMap</styleUrl>
+			<Style id="inline">
+				<IconStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</IconStyle>
+				<LineStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</LineStyle>
+				<PolyStyle>
+					<color>ffe7ebef</color>
+					<colorMode>normal</colorMode>
+				</PolyStyle>
+			</Style>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Towns_S">
+					<SimpleData name="Town">Ventnor</SimpleData>
+					<SimpleData name="Easting">456420</SimpleData>
+					<SimpleData name="Northing">77660</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>-1.204229944317541,50.59594751680806,46.43565926142037</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
