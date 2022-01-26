@@ -3,15 +3,15 @@
 <!-- A1136 Spatial Data and the Internet - Example Google Map showing use of markers and outline. S.Hallett -->
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<style type="text/css"> 
- html { height: 100% } 
- body { height: 100%; margin: 20px; padding: 0px } 
- #map_canvas { height: 100% } 
-</style> 
-<script type="text/javascript" 
-    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k"> 
-</script> 
-<script type="text/javascript"> 
+<style type="text/css">
+ html { height: 100% }
+ body { height: 100%; margin: 20px; padding: 0px }
+ #map_canvas { height: 100% }
+</style>
+<script type="text/javascript"
+    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k">
+</script>
+<script type="text/javascript">
 //<![CDATA[
 var map, marker;
 var lineColour    = '#0000FF'; // blue
@@ -27,13 +27,13 @@ function initialize() {
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
     setupMarkers();
 }
-function setupMarkers() { 
+function setupMarkers() {
     marker = new google.maps.Marker({
     position: new google.maps.LatLng(52.07437309560945,-0.6273464687520239),
     map: map,
     title: "B33"
   });
-  //marker.setMap(map); 
+  //marker.setMap(map);
   var b33_outline = new google.maps.Polyline({
           path: [new google.maps.LatLng(52.07434957966827,-0.6269634995542505),
            new google.maps.LatLng(52.07457710359038,-0.6274448423720855),
@@ -51,7 +51,7 @@ function setupMarkers() {
            strokeColor:   lineColour,
            strokeWeight:  lineThickness,
            strokeopacity: lineOpacity});
-  google.maps.event.addListener(marker,"click",function(event){infowin = 
+  google.maps.event.addListener(marker,"click",function(event){infowin =
     new google.maps.InfoWindow({
       position: new google.maps.LatLng(52.07437309560945,-0.6273464687520239),
       content: "<b>B33</b><br />Here is Building 33<br/>"
@@ -68,16 +68,16 @@ function clearMarkers() {
   }
   markersArray.length = 0;
 */
-marker.setMap(null);  
+marker.setMap(null);
 }
 function reloadMarkers() {
  setupMarkers();
 }
-function addLoadEvent(func) {    
+function addLoadEvent(func) {
   var oldonload = window.onload;
   if (typeof window.onload != 'function') {
     window.onload = func;
-  } 
+  }
   else {
     window.onload = function() {
       oldonload();
