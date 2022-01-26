@@ -22,7 +22,7 @@ var soils;
 var layers = {};
 layers.names = {};
 layers.files = [
-  new google.maps.KmlLayer('https://rendzina.github.io/WebMapping/data/iow_airfield/Building1.kml')
+  new google.maps.KmlLayer({url: "https://rendzina.github.io/WebMapping/data/iow_airfield/Building1.kml", map: map})
 ];
 layers.names = ["25k_Soilmaps"];
 
