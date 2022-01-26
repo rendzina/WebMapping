@@ -8,9 +8,8 @@
  html { height: 100% }
  body { height: 100%; margin: 20px; padding: 0px }
 </style>
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k&callback=initMap"
-async defer></script>
-<script type="text/javascript">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k&callback=initMap&v=weekly" async defer></script>
+<script>
 var map;
 var new_layer;
 var layers = [];   // define layers object
@@ -19,24 +18,24 @@ layers.files = [   // populate with layers: to customise, add new data source an
   new google.maps.KmlLayer("http://www.landis.org.uk/arcgis/rest/services/LandIS/SoilMapOutlines/MapServer/kml/mapImage.kmz"),
   new google.maps.KmlLayer("http://www.landis.org.uk/arcgis/services/LandIS/SoilMapOutlines/MapServer/KmlServer")
   ];
-layers.names = ["1:25k Maps","LandIS_KMZ_File","AGS_Service"];
+layers.names = ["25k_Maps","LandIS_KMZ_File","AGS_Service"];
 
 // Layer Manager code - allows efficient use of multiple layers
 function toggleLayer(lyrName){
-  //var names = layer_names;
+  var names = layers.names;
   var found = false;
-  for (i in layer_names){
-    if(lyrName === layer_names[i]){
+  for (i in names){
+    if(lyrName === names[i]){
       found = true;
-      if (document.getElementById(layer_names[i]).checked){
-        layer_files[i].setMap(map);  // turn layer ON
+      if (document.getElementById(layers.names[i]).checked){
+        layers.files[i].setMap(map);
       } else {
-        layer_files[i].setMap(null); // turn layer OFF
+        layers.files[i].setMap(null);
       }
       break;
     }
   }
-  if (!found){alert("error: toggleLayer(" + lyrName + ") : layer not found");} // error trap
+  if (!found){alert("error: toogleLayer(" + lyrName + ") : layer not found");}
 }
 
 function initMap() { // constructor function
@@ -54,8 +53,8 @@ function initMap() { // constructor function
       map.getZoom().toString() + "<br />\n" + "center: " + map.getCenter().toString();
     });
     // Set up initial checkbox status and turn layers on and off at the start up:
-    document.getElementById("Personal_KMZ_File").checked=true;
-    toggleLayer('Personal_KMZ_File');
+    document.getElementById("25k_Maps").checked=true;
+    toggleLayer('25k_Maps');
 
     // Note using the layer manager above somewhat hides the simplicity of adding new kml layers,
     //   which at its simplest is done like this (uncomment the 2 lines below to see):
@@ -66,16 +65,16 @@ function initMap() { // constructor function
 
 </head>
 <body>
-<h2>A1136 Spatial Data and the Internet - Google Maps API example</h2>
+<h2>A1136 Web Mapping - Google Maps API example</h2>
 <div id="container" style="overflow: auto; height: 4%;">
   <div id="map_info" style="float: left; display: inline; font-size: xx-small; background-color: #ffefd5;">Loading ...</div>
 </div>
 <div id="map_canvas" style="width: 700px; height: 500px"></div>
 <form name="frmToc"> <!-- to customise, add new input lines below, linked to data source names above -->
-  <input type='checkbox' name='Personal_KMZ_File' id='Personal_KMZ_File' onClick='toggleLayer(this.name)'/>Personal KMZ File<br />
+  <input type='checkbox' name='25k_Maps' id='25k_Maps' onClick='toggleLayer(this.name)'/>1:25k Soil Maps<br />
   <input type='checkbox' name='LandIS_KMZ_File' id='LandIS_KMZ_File' onClick='toggleLayer(this.name)'/>LandIS KMZ File<br />
   <input type='checkbox' name='AGS_Service' id='AGS_Service' onClick='toggleLayer(this.name)'/>ArcGIS Server MKZ SOAP service<br />
-    </form>
+</form>
 <hr/>
 <input type="button" value="Hybrid map" onclick="map.setMapTypeId(google.maps.MapTypeId.HYBRID);" />
 <input type="button" value="Roadmap map" onclick="map.setMapTypeId(google.maps.MapTypeId.ROADMAP);" />
