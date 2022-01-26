@@ -8,17 +8,10 @@
  html { height: 100% }
  body { height: 100%; margin: 20px; padding: 0px }
 </style>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k&callback=initMap&v=weekly" async defer></script>
 <script>
 var map;
 var new_layer;
-var layers = [];   // define layers object
-layers.files = [   // populate with layers: to customise, add new data source and name lines below, linked to input checkbox lines at the end
-  new google.maps.KmlLayer("https://rendzina.github.io/WebMapping/data/25k.kmz"),
-  new google.maps.KmlLayer("http://www.landis.org.uk/arcgis/rest/services/LandIS/SoilMapOutlines/MapServer/kml/mapImage.kmz"),
-  new google.maps.KmlLayer("http://www.landis.org.uk/arcgis/services/LandIS/SoilMapOutlines/MapServer/KmlServer")
-  ];
-layers.names = ["25k_Maps","LandIS_KMZ_File","AGS_Service"];
+var layers = [];   // define layers object as global
 
 // Layer Manager code - allows efficient use of multiple layers
 function toggleLayer(lyrName){
@@ -39,6 +32,12 @@ function toggleLayer(lyrName){
 }
 
 function initMap() { // constructor function
+  layers.files = [   // populate with layers: to customise, add new data source and name lines below, linked to input checkbox lines at the end
+    new google.maps.KmlLayer("https://rendzina.github.io/WebMapping/data/25k.kmz"),
+    new google.maps.KmlLayer("http://www.landis.org.uk/arcgis/rest/services/LandIS/SoilMapOutlines/MapServer/kml/mapImage.kmz"),
+    new google.maps.KmlLayer("http://www.landis.org.uk/arcgis/services/LandIS/SoilMapOutlines/MapServer/KmlServer")
+    ];
+  layers.names = ["25k_Soilmaps","LandIS_KMZ_File","AGS_Service"];
     var centerpoint = new google.maps.LatLng(52.6093818544749,-1.906121999999982);
     var mapOptions = {
       zoom: 6,
@@ -53,8 +52,8 @@ function initMap() { // constructor function
       map.getZoom().toString() + "<br />\n" + "center: " + map.getCenter().toString();
     });
     // Set up initial checkbox status and turn layers on and off at the start up:
-    document.getElementById("25k_Maps").checked=true;
-    toggleLayer('25k_Maps');
+    document.getElementById("25k_Soilmaps").checked=true;
+    toggleLayer('25k_Soilmaps');
 
     // Note using the layer manager above somewhat hides the simplicity of adding new kml layers,
     //   which at its simplest is done like this (uncomment the 2 lines below to see):
@@ -71,7 +70,7 @@ function initMap() { // constructor function
 </div>
 <div id="map_canvas" style="width: 700px; height: 500px"></div>
 <form name="frmToc"> <!-- to customise, add new input lines below, linked to data source names above -->
-  <input type='checkbox' name='25k_Maps' id='25k_Maps' onClick='toggleLayer(this.name)'/>1:25k Soil Maps<br />
+  <input type='checkbox' name='25k_Soilmaps' id='25k_Soilmaps' onClick='toggleLayer(this.name)'/>1:25k Soil Maps<br />
   <input type='checkbox' name='LandIS_KMZ_File' id='LandIS_KMZ_File' onClick='toggleLayer(this.name)'/>LandIS KMZ File<br />
   <input type='checkbox' name='AGS_Service' id='AGS_Service' onClick='toggleLayer(this.name)'/>ArcGIS Server MKZ SOAP service<br />
 </form>
@@ -87,5 +86,6 @@ Do note that if you publish a KMZ service from ArcGIS Server, and then intend to
 So for example here:<br/>
 SOAP - http://www.landis.org.uk/arcgis/services/LandIS/SoilMapOutlines/MapServer/KmlServer - use this one<br/>
 REST - http://www.landis.org.uk/arcgis/rest/services/LandIS/SoilMapOutlines/MapServer/KmlServer - not this one
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k&callback=initMap&v=weekly"></script>
 </body>
 </html>
