@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   <head>
+      <title>A1136 Spatial Data and the Internet - Bing Map Example</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+      <script type="text/javascript">
+      var map = null;
+            
+      function getMap()
+      {
+          map = new Microsoft.Maps.Map(document.getElementById('myMap'), {credentials: 'Your Bing Maps Key'});
+      }   
+      </script>
+   </head>
+   <body onload="getMap();">
+      <h1>A1136 - Spatial Data and the Internet - Bing Map Example</h1>
+      <div id='myMap' style="position:relative; width:400px; height:400px;"></div>
+      <a href="http://www.bingmapsportal.com/ISDK/AjaxV7#CreateMap1">Online bing maps help</a>
+   </body>
+<!-- I know this gives an error - but I refuse to get a Bing account when other mapping APIs are so much easier to understand! -->
+</html>
