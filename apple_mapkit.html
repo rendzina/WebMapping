@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+
+<style>
+#map {
+    width: 100%;
+    height: 600px;
+}
+</style>
+
+</head>
+
+<body>
+<div id="map"></div>
+
+<script>
+const tokenID = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJRMzM0NDlNNzkifQ.eyJpc3MiOiI3RDdaNU1ROTVEIiwiaWF0IjoxNjQzMDI5NTE2LCJleHAiOjE2NDg2ODQ4MDB9.ZfJVwJtAi8yraFskdGv50dc0drjd5w9TQeX1aY5nHeSCd5mRQvTw95MnQB1mKwBb3jq4VI8w7pdn5e4rgEuNuQ";
+
+mapkit.init({
+    authorizationCallback: function(done) {
+        done(tokenID);
+    }
+});
+
+var map = new mapkit.Map("map");
+</script>
+</body>
+</html>
