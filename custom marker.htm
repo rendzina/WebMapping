@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<!-- Web Mapping: Note all the comments in the code -->
+<head>
+
+<!-- The styles here are defined in the file, rather than a separate CSS file -->
+<style type="text/css">
+ html { height: 100% }
+ body { height: 100%; margin: 20px; padding: 0px }
+</style>
+
+<!-- To get new API codes, see https://accounts.google.com/ -->
+<script type="text/javascript"
+    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k">
+</script>
+<script type="text/javascript">
+//<![CDATA[
+
+var point_array = [
+   ['Creise',-4.871604,56.615340,1100],
+   ['Stob Dubh',-4.988868,56.595394,883],
+   ['Buachaille Etive Mòr',-4.902454,56.645407,1022],
+   ['Beinn Mhic Chasgaig',-4.900744,56.609852,864],
+   ['Bidean nam Bian',-5.028964,56.642655,1150]
+  ];
+
+var map;
+
+function initialise() { // constructor function
+    var centerpoint = new google.maps.LatLng(56.626140,-4.935082);
+    var mapOptions = {
+      zoom: 11,
+      center: centerpoint,
+	  draggableCursor: 'pointer',
+      draggingCursor: 'move',
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+	setMarkers(map, point_array);
+}
+
+function setMarkers(map, locations) {
+  // Add markers to the map
+
+  // Marker sizes are expressed as a Size of X,Y
+  // where the origin of the image (0,0) is located
+  // in the top left of the image.
+
+  // Origins, anchor positions and coordinates of the marker
+  // increase in the X direction to the right and in
+  // the Y direction down.
+  var image = {
+    url: 'Marker.png',
+    // This marker is 42 pixels wide by 41 pixels tall.
+    size: new google.maps.Size(42, 41),
+    // The origin for this image is 0,0.
+    origin: new google.maps.Point(0,0),
+    // The anchor for this image is the base of the logo at 20,41.
+    anchor: new google.maps.Point(20, 41)
+  };
+  var shadow = {
+    url: 'Marker_Shadow.png',
+    // The shadow image is larger in the horizontal dimension
+    // while the position and offset are the same as for the main image.
+    size: new google.maps.Size(42, 41),
+    origin: new google.maps.Point(0,0),
+    anchor: new google.maps.Point(20, 41)
+  };
+  // Shapes define the clickable region of the icon.
+  // The type defines an HTML element 'poly' which
+  // traces out a polygon as a series of X,Y points. The final
+  // coordinate closes the poly by connecting to the first
+  // coordinate.
+  var shape = {
+      coord: [1, 1, 1, 41, 42, 41, 42, 1, 1, 1],
+      type: 'poly'
+  };
+  for (var i = 0; i < point_array.length; i++) {
+    var myPoint = point_array[i];
+	var infowindow = new google.maps.InfoWindow();
+    var myLatLng = new google.maps.LatLng(myPoint[2], myPoint[1]);
+	//var mkrName = this['marker_' + i]
+    this['marker_' + i] = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        shadow: shadow,
+        icon: image,
+        shape: shape,
+        title: myPoint[0],
+		zindex: 1
+    });
+	google.maps.event.addListener(
+      ['marker_' + i], 'click', function() {
+	    infowindow.setContent("<b>Hello</b><br />World");
+	    infowindow.setPosition(myLatLng);
+	    infowindow.open(map);}
+    );
+	//this['marker_' + i].setMap(map);
+	console.log( ['marker_' + i]);
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', initialise);
+//]]>
+</script>
+</head>
+<body>
+<h2>A1136 Web Mapping - Google Maps API example - custom markers</h2>
+<div id="map_canvas" style="width: 700px; height: 500px"></div>
+</br>
+</body>
+</html>
