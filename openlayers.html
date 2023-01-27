@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Tiled ArcGIS MapServer</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/css/ol.css" type="text/css">
-<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/build/ol.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.2.2/ol.css">
+<script src=" https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>
 <style>
 .map {
     width: 100%;
@@ -18,8 +18,8 @@
 See <a href="https://openlayers.org/en/latest/examples/arcgis-tiled.html" target="_blank">https://openlayers.org/en/latest/examples/arcgis-tiled.html</a>
 <script>
 	var url =
-  'https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/' +
-  'Specialty/ESRI_StateCityHighway_USA/MapServer';
+  'https://sampleserver6.arcgisonline.com/ArcGIS/rest/services/' +
+  'USA/MapServer';
 var layers = [
   new ol.layer.Tile({
     source: new ol.source.OSM(),
