@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
+<!-- Described at: https://developer.apple.com/documentation/mapkitjs -->
+<!-- also see https://maps.developer.apple.com -->
 <head>
 <meta charset="utf-8">
 
-<script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+<script
+  src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.core.js"
+  crossorigin async
+  data-callback="initMapKit"
+  data-libraries="map"
+  data-initial-token="eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjY2TURRMzVNNDUifQ.eyJpc3MiOiI3RDdaNU1ROTVEIiwiaWF0IjoxNjc0ODkzNzY4LCJleHAiOjE3MDYzMTM2MDB9.dWM2fBMXd8_n-Lhg6PZiv_38lBdw2ZfnRM-FBdmB_XaLuYswS1grhOPbve0ADJjcrw895R5T7wLztGsZG-2suw"
+></script>
 
 <style>
 #map {
@@ -17,16 +25,29 @@
 <body>
 <div id="map"></div>
 
-<script>
-const tokenID = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJRMzM0NDlNNzkifQ.eyJpc3MiOiI3RDdaNU1ROTVEIiwiaWF0IjoxNjQzMDI5NTE2LCJleHAiOjE2NDg2ODQ4MDB9.ZfJVwJtAi8yraFskdGv50dc0drjd5w9TQeX1aY5nHeSCd5mRQvTw95MnQB1mKwBb3jq4VI8w7pdn5e4rgEuNuQ";
+<script type="module">
 
-mapkit.init({
-    authorizationCallback: function(done) {
-        done(tokenID);
+(async () => {
+    const tokenID = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjY2TURRMzVNNDUifQ.eyJpc3MiOiI3RDdaNU1ROTVEIiwiaWF0IjoxNjc0ODkzNzY4LCJleHAiOjE3MDYzMTM2MDB9.dWM2fBMXd8_n-Lhg6PZiv_38lBdw2ZfnRM-FBdmB_XaLuYswS1grhOPbve0ADJjcrw895R5T7wLztGsZG-2suw";
+
+    if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
+        // mapkit.core.js or the libraries are not loaded yet.
+        // Set up the callback and wait for it to be called.
+        await new Promise(resolve => { window.initMapKit = resolve });
+
+        // Clean up
+        delete window.initMapKit;
     }
-});
 
-var map = new mapkit.Map("map");
+    mapkit.init({
+        authorizationCallback: function(done) {
+            done(tokenID);
+        }
+    });
+
+    const map = new mapkit.Map("map");
+})();
+
 </script>
 </body>
 </html>
