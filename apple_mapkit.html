@@ -26,10 +26,7 @@
 <div id="map"></div>
 
 <script type="module">
-
-(async () => {
-    const tokenID = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjY2TURRMzVNNDUifQ.eyJpc3MiOiI3RDdaNU1ROTVEIiwiaWF0IjoxNjc0ODkzNzY4LCJleHAiOjE3MDYzMTM2MDB9.dWM2fBMXd8_n-Lhg6PZiv_38lBdw2ZfnRM-FBdmB_XaLuYswS1grhOPbve0ADJjcrw895R5T7wLztGsZG-2suw";
-
+const setupMapKitJs = async() => {
     if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
         // mapkit.core.js or the libraries are not loaded yet.
         // Set up the callback and wait for it to be called.
@@ -38,19 +35,32 @@
         // Clean up
         delete window.initMapKit;
     }
-
+    const tokenID = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjY2TURRMzVNNDUifQ.eyJpc3MiOiI3RDdaNU1ROTVEIiwiaWF0IjoxNjc0ODkzNzY4LCJleHAiOjE3MDYzMTM2MDB9.dWM2fBMXd8_n-Lhg6PZiv_38lBdw2ZfnRM-FBdmB_XaLuYswS1grhOPbve0ADJjcrw895R5T7wLztGsZG-2suw";
     mapkit.init({
         authorizationCallback: function(done) {
             done(tokenID);
         }
     });
+};
 
-    const iow_region = new mapkit.BoundingRegion(50.807634, -1.594763, 50.565998, -1.049043);
+const main = async() => {
+    await setupMapKitJs();
+    // Markers
+    //var MarkerAnnotation = mapkit.MarkerAnnotation;
+    //var myMarker = new mapkit.Coordinate(50.678477, -1.285889);
+    // Region and Zoom variables for IoW
+    const iow_region = new mapkit.CoordinateRegion(
+        new mapkit.Coordinate(50.678477, -1.285889),
+        new mapkit.CoordinateSpan(0.20, 0.10)
+    );
+    //const iow_region = new mapkit.BoundingRegion(50.807634, -1.594763, 50.565998, -1.049043);
     var map = new mapkit.Map("map");
+    //var myAnnotation = new MarkerAnnotation(myMarker, { color: "#9b6bcc", title: "Newport"});
+    //map.showItems([myAnnotation]);
     map.region = iow_region;
-    //var map = new mapkit.Map('map', { center: new mapkit.Coordinate(50.678477, -1.285889) });
+  };
 
-})();
+  main();
 
 </script>
 </body>
