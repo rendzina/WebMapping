@@ -2,6 +2,7 @@
 <html>
 <!-- Described at: https://developer.apple.com/documentation/mapkitjs -->
 <!-- also see https://maps.developer.apple.com -->
+<!-- and https://stackoverflow.com/questions/57513402/creating-mapkit-js-with-origin-destination-and-waypoints -->
 <head>
 <meta charset="utf-8">
 
@@ -9,7 +10,7 @@
   src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.core.js"
   crossorigin async
   data-callback="initMapKit"
-  data-libraries="map"
+  data-libraries="map,annotations,services"
   data-initial-token="eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjY2TURRMzVNNDUifQ.eyJpc3MiOiI3RDdaNU1ROTVEIiwiaWF0IjoxNjc0ODkzNzY4LCJleHAiOjE3MDYzMTM2MDB9.dWM2fBMXd8_n-Lhg6PZiv_38lBdw2ZfnRM-FBdmB_XaLuYswS1grhOPbve0ADJjcrw895R5T7wLztGsZG-2suw"
 ></script>
 
@@ -45,6 +46,37 @@ const setupMapKitJs = async() => {
 
 const main = async() => {
     await setupMapKitJs();
+
+    // Function to draw the route once MapKit has returned a response
+    function directionHandler(error, data) {
+        data["routes"].forEach(function(route, routeIdx) {
+            if (routeIdx !== 0) { return; }
+            overlays = [];
+            route['path'].forEach(function(path) {
+                // This styles the line drawn on the map
+                let overlayStyle = new mapkit.Style({
+                    lineWidth: 3,
+                    strokeColor: "#9b6bcc"
+                });
+                let overlay = new mapkit.PolylineOverlay(path, {
+                    style: overlayStyle
+                });
+                overlays.push(overlay);
+            });
+            map.addOverlays(overlays);
+        });
+    }
+
+    // This asks MapKit for directions and when it gets a response sends it to directionHandler
+    function computeDirections(origin,destination) {
+        let directionsOptions = {
+            origin: origin,
+            destination: destination,
+            transportType: mapkit.Directions.Transport.Automobile
+        };
+        directions.route(directionsOptions, directionHandler);
+    }
+
     // Markers
     //var MarkerAnnotation = mapkit.MarkerAnnotation;
     //var myMarker = new mapkit.Coordinate(50.678477, -1.285889);
@@ -58,6 +90,32 @@ const main = async() => {
     //var myAnnotation = new MarkerAnnotation(myMarker, { color: "#9b6bcc", title: "Newport"});
     //map.showItems([myAnnotation]);
     map.region = iow_region;
+
+    var myAnnotations = [];
+    // lastWaypoint variable is 'unset' initially so the map doesn't try and find a route to the lastWaypoint for the first point of the route
+    var lastWaypoint = "unset";
+    var directions = new mapkit.Directions();
+
+    // Array of co-ordinates and label for marker
+    var waypoints = [
+      {name:'Ferry terminal',lat:50.758801,lon:-1.289778},
+      {name:'Osborne House',lat:50.748926,lon:-1.272298},
+      {name:'Carisbrooke Castle',lat:50.687003,lon:-1.315509}
+    ];
+    // Loop through the array and create marker for each
+    waypoints.forEach(function(data) {
+      var myAnnotation = new mapkit.MarkerAnnotation(new mapkit.Coordinate(data['lat'],data['lon']), {
+        color: "#9b6bcc",
+        title: data['name']
+      });
+      myAnnotations.push(myAnnotation);
+      // As long as this isn't the first point on the route, draw a route back to the last point
+      if(lastWaypoint!="unset") {
+        computeDirections(lastWaypoint,new mapkit.Coordinate(data['lat'],data['lon']));
+      }
+      lastWaypoint = new mapkit.Coordinate(data['lat'],data['lon']);
+    });
+    map.showItems(myAnnotations);
   };
 
   main();
