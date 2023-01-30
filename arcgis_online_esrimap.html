@@ -3,6 +3,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>ArcGIS API for JavaScript Tutorials: Display a web map</title>
+	<link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.25/"></script>
     <style>
         html,
         body,
@@ -14,9 +16,6 @@
         }
     </style>
 
-	</style>
-	<link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.22/"></script>
 	<script>
 		require([
 		  "esri/config",
@@ -26,37 +25,37 @@
 		  "esri/widgets/Legend"
 		], function(esriConfig, WebMap, MapView, ScaleBar, Legend) {
 
-	// Code to create the map and view will go here
-		esriConfig.apiKey = "";   // add api key
-		
-		      
-		const webmap = new WebMap({
+			// Code to create the map and view will go here
+			esriConfig.apiKey = "YOUR_API_KEY";
+			
+			const webmap = new WebMap({
 			portalItem: {
 			  id: "6dd6de84899941ccb32a2f30cdcea672"
-			}
-		});
-		
-		const view = new MapView({
-				container: "viewDiv",
-				map: webmap
-		});
-
-		const scalebar = new ScaleBar({
-			view: view
-		});
-
-		view.ui.add(scalebar, "bottom-left");
-		
-		const legend = new Legend ({
+				}
+			});
+			
+			const view = new MapView({
+					container: "viewDiv",
+					map: webmap
+			});
+			
+			const scalebar = new ScaleBar({
 				view: view
-			  });
-		view.ui.add(legend, "top-right");
+			});
+
+			view.ui.add(scalebar, "bottom-left");
+			
+			const legend = new Legend ({
+					view: view
+				  });
+			view.ui.add(legend, "top-right");
+
 
 	  });
 	</script>
 
   </head>
   <body>
-	<div id="viewDiv"></div>
-  </body>
+    <div id="viewDiv"></div>
+</body>
 </html>
