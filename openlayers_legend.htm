@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.2.2/ol.css">
+    <style>
+      .map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>
+    <title>OpenLayers example</title>
+  </head>
+  <body>
+    <h2>Openlayers with legend from geoserver</h2>
+    <div id="map" class="map"></div>
+	Legend:
+    <div><img id="legend"/></div>
+    <script type="text/javascript">
+	
+		const wmsSource = new ol.source.ImageWMS({
+		  url: 'https://ahocevar.com/geoserver/wms',
+		  params: {'LAYERS': 'topp:states'},
+		  ratio: 1,
+		  serverType: 'geoserver',
+		});
+
+		const updateLegend = function (resolution) {
+		const graphicUrl = wmsSource.getLegendUrl(resolution);
+		const img = document.getElementById('legend');
+		  img.src = graphicUrl;
+		};
+
+		const map = new ol.Map({
+		  target: 'map',
+		  layers: [
+			new ol.layer.Tile({
+			  source: new ol.source.OSM(),
+			}),
+			new ol.layer.Image({
+			  extent: [-13884991, 2870341, -7455066, 6338219],
+			  source: wmsSource,
+		    }),
+		  ],	  
+		  view: new ol.View({
+			  center: [-10997148, 4569099],
+			  zoom: 4
+		  }),
+		});
+		
+		// Initial legend
+		const resolution = map.getView().getResolution();
+		updateLegend(resolution);
+
+		// Update the legend when the resolution changes
+		map.getView().on('change:resolution', function (event) {
+		  const resolution = event.target.getResolution();
+		  updateLegend(resolution);
+		});
+		
+    </script>
+  </body>
+</html
