@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <!-- svg_example.htm
+     An SVG example using the Dojo Javascript framework
+
+	 To learn more about Dojo, see http://dojotoolkit.org/ and http://dojotoolkit.org/reference-guide/1.8/dojox/gfx.html
+     To learn more about SVG, see http://www.w3schools.com/svg/default.asp
+
+	 The SVG file fragment itself was created from the 'export to svg' option in the QGis map composer
+     In particular, this file is based on the tutorial at http://dojotoolkit.org/documentation/tutorials/1.8/gfx/
+	 s.hallett
+     -->
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>A1136 Web Mapping: SVG example using Dojo</title>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.8.3/dijit/themes/claro/claro.css" media="screen">
+  <!-- load Dojo -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.1/dojo/dojo.js" data-dojo-config="async: true"></script>
+  <!-- Load in separate file of IOW SVG data -->
+  <script src="./iowMap.js"></script>
+  </head>
+
+  <body>
+  <h2>A1136 Web Mapping: SVG example using Dojo</h2>
+  <p>Find out about the Dojo API tools <a href="http://dojotoolkit.org/" target="_blank">http://dojotoolkit.org/</a></p>
+  <!-- DOM element which will become the surface -->
+  <div id="surfaceElement" style="border:1px solid #ccc;width:700px;height:400px;"></div>
+  <script type="text/javascript">
+	// Include all the required dojo components
+	require(["dojox/gfx", "dojox/gfx/Moveable", "dojox/gfx/fx"], function(gfx, Moveable, gfxFx) {
+	gfx.renderer = "canvas";
+
+	// Create a GFX surface, arguments: node, width, height
+	surface = gfx.createSurface("surfaceElement", 700, 400);
+
+	// Ellipse 100px wide, 100px tall, at position 520x, 260y
+    surface.createEllipse({cx: 520, cy: 260, rx: 100, ry: 100 })
+	  .setFill({type: "radial", cx: 550, cy: 200,
+	  colors: [ { offset: 0,   color: "#4ea1fc" },
+                { offset: 0.5, color: "#0072e5" },
+				{ offset: 1,   color: "#003b80" }
+    		] });
+
+    // Rectangle 200px wide, 100px tall at position 450x, 50y
+    var rectangle = surface.createRect({ x: 450, y: 50, width: 200, height: 100 })
+	  .setFill("yellow")
+	  .setStroke("blue");
+	// Shape event handlers
+	dojo.connect(rectangle.getEventSource(),"onclick",    function() {alert("Hello world");});
+	dojo.connect(rectangle.getEventSource(),"onmouseover",function() {rectangle.setFill("green");});
+	dojo.connect(rectangle.getEventSource(),"onmouseout", function() {rectangle.setFill("yellow");});
+
+	// Text font to 12pt Arial Bold, blue fill
+	surface.createText({ x: 450, y: 40, text: "Try mouseover and click", align: "start"}).
+	setFont({ family: "Arial", size: "12pt", weight: "bold" }).
+	setFill("blue");
+	surface.createText({ x: 50, y: 30, text: "Try grabbing and moving shape", align: "start"}).
+	setFont({ family: "Arial", size: "12pt", weight: "bold" }).
+	setFill("blue");
+
+	// SVG path (extract from svg file exported by QGis map composer from IOW shapefile)
+	var iow_group = surface.createGroup();
+    for(var key in iowMap.shapes) {
+		var path = iow_group.createPath(iowMap.shapes[key]).
+		    setStroke({color: "green", width: 2, style: "shortdashdot"});
+	};
+    // Add event handlers to all members of the group
+	iow_group.connect("onclick", function(e){
+	  var s = e.gfxTarget; s.setStroke({color: "blue", width: 4}); });
+
+	// Make the group moveable
+	new Moveable(iow_group);
+
+	// Animation
+	var animation = new gfxFx.animateTransform({
+		duration: 2500,
+		shape: iow_group,
+		transform: [{
+			name: "rotategAt",
+			start: [0, 200, 200],  // Starts at 0 degree rotation at center-point 200x200
+			end:   [360, 200, 200] // Ends at 360 degrees
+		}]
+	});
+	// Showtime!
+	animation.play();
+
+  });
+
+  </script>
+
+</body>
+</html>
