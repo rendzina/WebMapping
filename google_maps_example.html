@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- A1136 Spatial Data and the Internet - Example Google Map showing use of markers and outline. S.Hallett -->
+<!-- A1136 Web Mapping: Example Google Map showing use of markers and outline. S.Hallett -->
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <style type="text/css">
@@ -8,11 +8,9 @@
  body { height: 100%; margin: 20px; padding: 0px }
  #map_canvas { height: 100% }
 </style>
-<script type="text/javascript"
-    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k">
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k">
 </script>
-<script type="text/javascript">
-//<![CDATA[
+<script>
 var map, marker;
 var lineColour    = '#0000FF'; // blue
 var lineThickness = 3;         // pixels
@@ -62,7 +60,7 @@ function setupMarkers() {
   google.maps.event.addListener(marker,"mouseout", function(event){b33_outline.setMap(null)});
 }
 function clearMarkers() {
-/* // commented code below would be basis for removing an array of lots of markers
+/* commented code below would be basis for removing an array of lots of markers
   for (var i = 0; i < markersArray.length; i++ ) {
     markersArray[i].setMap(null);
   }
@@ -86,10 +84,9 @@ function addLoadEvent(func) {
   }
 }
 addLoadEvent(initialize);
-//]]>
 </script>
 
-<h1>A1136 Spatial Data and the Internet</h1>
+<h1>A1136 Web Mapping</h1>
 <div id="map_canvas" style="width: 680px; height: 500px"></div><hr />
 <p>Mapping the location of building B33 using Google Maps - move the mouse over the marker to show the B33 outline</p>
 <button onclick="clearMarkers()">Clear markers</button>&nbsp;<button onclick="reloadMarkers()">Reload markers</button>

@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
-<!-- Web Mapping: Note all the comments in the code -->
+<!-- A1136 Web Mapping: Note all the comments in the code -->
 <head>
 
 <!-- The styles here are defined in the file, rather than a separate CSS file -->
 <style type="text/css">
- html { height: 100% }
- body { height: 100%; margin: 20px; padding: 0px }
+html {
+    height: 100%
+}
+body {
+    height: 100%;
+    margin: 20px;
+    padding: 0px
+}
 </style>
 
 <!-- To get new API codes, see https://accounts.google.com/ -->
-<script type="text/javascript"
-    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k">
+<script   src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k">
 </script>
-<script type="text/javascript">
-//<![CDATA[
-
+<script>
 var point_array = [
    ['Creise',-4.871604,56.615340,1100],
    ['Stob Dubh',-4.988868,56.595394,883],
@@ -99,16 +102,13 @@ function setMarkers(map, locations) {
 	console.log( ['marker_' + i]);
   }
 }
-
 google.maps.event.addDomListener(window, 'load', initialise);
-//]]>
 </script>
 </head>
 <body>
 <h2>A1136 Web Mapping - Google Maps API example - custom markers</h2>
 <div id="map_canvas" style="width: 700px; height: 500px"></div>
 </br>
-<p>Heres the marker used: <img src="https://rendzina.github.io/WebMapping/images/marker.png"> plus the shadow <img src="https://rendzina.github.io/WebMapping/images/marker_shadow.png">
-<a href="https://rendzina.github.io/WebMapping/images/marker.png">https://rendzina.github.io/WebMapping/images/marker.png</a>
+<p>Heres the marker used: <img src="https://rendzina.github.io/WebMapping/images/marker.png"> plus the shadow <img src="https://rendzina.github.io/WebMapping/images/marker_shadow.png"> <a href="https://rendzina.github.io/WebMapping/images/marker.png">https://rendzina.github.io/WebMapping/images/marker.png</a>
 </body>
 </html>

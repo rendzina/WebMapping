@@ -8,8 +8,14 @@ the HTML is also on GitHub -->
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <style type="text/css">
- html { height: 100% }
- body { height: 100%; margin: 20px; padding: 0px }
+html {
+    height: 100%
+}
+body {
+    height: 100%;
+    margin: 20px;
+    padding: 0px
+}
 </style>
 <!-- The API key may change - we will advise you of the API key to use in class -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k&v=weekly"></script>
@@ -74,9 +80,11 @@ addLoadEvent(initialise);
 </head>
 <body>
 <h1>A1136 Web Mapping</h1>
-<div id="map_canvas" style="width: 700px; height: 400px"></div><hr />
+<div id="map_canvas" style="width: 700px; height: 400px"></div>
+<hr />
 <form name="frmToc">
-  <input type='checkbox' name='25k_Soilmaps' id='25k_Soilmaps' onClick='toggleLayer(this.name)'/>1:25k Soil Maps<br />
+  <input type='checkbox' name='25k_Soilmaps' id='25k_Soilmaps' onClick='toggleLayer(this.name)'/>
+  1:25k Soil Maps<br />
 </form>
 </body>
 </html>

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    <title>Showing pixel and tile coordinates</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
+<!-- A1136 Web Mapping: Note all the comments in the code -->
+<head>
+<title>Google web map showing pixel and tile coordinates</title>
+<meta name="viewport" content="initial-scale=1.0">
+<meta charset="utf-8">
+<style>
 /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+   element that contains the map. */
 #map {
     height: 100%;
 }
@@ -17,8 +18,8 @@ html, body {
     padding: 0;
 }
 </style>
-    </head>
-    <body>
+</head>
+<body>
 <div id="map"></div>
 <script>
       function initMap() {
@@ -79,7 +80,7 @@ html, body {
             TILE_SIZE * (0.5 + latLng.lng() / 360),
             TILE_SIZE * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI)));
       }
-    </script> 
+    </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k&callback=initMap"
     async defer></script>
 </body>
