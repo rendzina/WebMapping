@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <!-- See https://developers.arcgis.com/javascript/latest/sample-code/layers-featurelayer/index.html -->
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
-    <title>Loading a FeatureLayer</title>
-    <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css"/>
-    <script src="https://js.arcgis.com/4.25/"></script>
-    <style>
-      html,
-      body,
-      #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: 100%;
-        width: 100%;
-      }
-    </style>
-    <script>
+<!-- A1136 Web Mapping: Note all the comments in the code -->
+<!-- See https://developers.arcgis.com/javascript/latest/sample-code/layers-featurelayer/index.html -->
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+<title>Loading a FeatureLayer</title>
+<link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css"/>
+<script src="https://js.arcgis.com/4.25/"></script>
+<style>
+html, body, #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+</style>
+<script>
       var map;
       require([
         "esri/Map",
@@ -45,8 +44,8 @@
         map.add(featureLayer);
       });
     </script>
-  </head>
-  <body>
-    <div id="viewDiv"></div>
-  </body>
+</head>
+<body>
+<div id="viewDiv"></div>
+</body>
 </html>

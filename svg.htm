@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <!-- svg_example.htm
+<!-- A1136 Web Mapping: Note all the comments in the code -->
+<!-- svg_example.htm
      An SVG example using the Dojo Javascript framework
 
 	 To learn more about Dojo, see http://dojotoolkit.org/ and http://dojotoolkit.org/reference-guide/1.8/dojox/gfx.html
@@ -8,24 +9,24 @@
 
 	 The SVG file fragment itself was created from the 'export to svg' option in the QGis map composer
      In particular, this file is based on the tutorial at http://dojotoolkit.org/documentation/tutorials/1.8/gfx/
-	 s.hallett
+	 S.Hallett
      -->
-  <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>A1136 Web Mapping: SVG example using Dojo</title>
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.8.3/dijit/themes/claro/claro.css" media="screen">
-  <!-- load Dojo -->
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.1/dojo/dojo.js" data-dojo-config="async: true"></script>
-  <!-- Load in separate file of IOW SVG data -->
-  <script src="./iowMap.js"></script>
-  </head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>A1136 Web Mapping: SVG example using Dojo</title>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.8.3/dijit/themes/claro/claro.css" media="screen">
+<!-- load Dojo -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.1/dojo/dojo.js" data-dojo-config="async: true"></script>
+<!-- Load in separate file of IOW SVG data -->
+<script src="./iowMap.js"></script>
+</head>
 
-  <body>
-  <h2>A1136 Web Mapping: SVG example using Dojo</h2>
-  <p>Find out about the Dojo API tools <a href="http://dojotoolkit.org/" target="_blank">http://dojotoolkit.org/</a></p>
-  <!-- DOM element which will become the surface -->
-  <div id="surfaceElement" style="border:1px solid #ccc;width:700px;height:400px;"></div>
-  <script type="text/javascript">
+<body>
+<h2>A1136 Web Mapping: SVG example using Dojo</h2>
+<p>Find out about the Dojo API tools <a href="http://dojotoolkit.org/" target="_blank">http://dojotoolkit.org/</a></p>
+<!-- DOM element which will become the surface -->
+<div id="surfaceElement" style="border:1px solid #ccc;width:700px;height:400px;"></div>
+<script >
 	// Include all the required dojo components
 	require(["dojox/gfx", "dojox/gfx/Moveable", "dojox/gfx/fx"], function(gfx, Moveable, gfxFx) {
 	gfx.renderer = "canvas";
@@ -85,8 +86,6 @@
 	animation.play();
 
   });
-
   </script>
-
 </body>
 </html>

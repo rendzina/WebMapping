@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Test Bing Map - KML Loader</title>
-        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-        <style type='text/css'>body{margin:0;padding:0;overflow:hidden;font-family:'Segoe UI',Helvetica,Arial,Sans-Serif}</style>
-        <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AoAArsEYRIsGcUIfrqFbjxdRzYUpwrtir6LXbcO95N7wtYF0msqr5gpLZcZKR5oM&callback=loadMapScenario' async defer></script>
-    </head>
-    <body>
-    	<h1>MS Map</h1>
-        <div id='printoutPanel'></div>
-        <div id='myMap' style='width: 100vw; height: 100vh;'></div>
-        <script type='text/javascript'>
+<!-- A1136 Web Mapping: Note all the comments in the code -->
+<head>
+<title>Test Bing Map - KML Loader</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif
+}
+</style>
+<script src="https://www.bing.com/api/maps/mapcontrol?key=AoAArsEYRIsGcUIfrqFbjxdRzYUpwrtir6LXbcO95N7wtYF0msqr5gpLZcZKR5oM&callback=loadMapScenario" async defer></script>
+</head>
+<body>
+<h1>MS Map</h1>
+<div id="printoutPanel"></div>
+<div id="myMap" style="width: 100vw; height: 100vh;"></div>
+<script type="text/javascript">
             function loadMapScenario() {
-                var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
-                Microsoft.Maps.loadModule('Microsoft.Maps.GeoXml', function () {
-                    var layer = new Microsoft.Maps.GeoXmlLayer('http://public.cranfield.ac.uk/ss01shh/SDI/25k.kml');
+                var map = new Microsoft.Maps.Map(document.getElementById("myMap"), {});
+                Microsoft.Maps.loadModule("Microsoft.Maps.GeoXml", function () {
+                    var layer = new Microsoft.Maps.GeoXmlLayer("http://public.cranfield.ac.uk/ss01shh/SDI/25k.kml");
                     map.layers.insert(layer);
                 });
-                var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+                var map = new Microsoft.Maps.Map(document.getElementById("myMap"), {
                     /* No need to set credentials if already passed in URL */
                     center: new Microsoft.Maps.Location(50.679668, -1.280817),
                     zoom: 11 });
             }
         </script>
-    </body>
+</body>
 </html>
