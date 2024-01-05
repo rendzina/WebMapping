@@ -1,4 +1,5 @@
 // A1136 Web Mapping: Note all the comments in the code
+// Code: proj4.js
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :

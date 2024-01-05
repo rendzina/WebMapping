@@ -1,5 +1,5 @@
-// Code : all-overlays-geoserver.js
-
+// A1136 Web Mapping: Note all the comments in the code
+// Code: all-overlays-geoserver.js
 var map, layer_Basemap, layer_Croydon_POI;
 
 function init() {
