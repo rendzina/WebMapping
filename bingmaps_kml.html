@@ -2,7 +2,7 @@
 <html>
 <!-- A1136 Web Mapping: Note all the comments in the code -->
 <head>
-<title>Test Bing Map - KML Loader</title>
+<title>A1136 Web Mapping: Test Bing Map, KML Loader</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 body {
@@ -22,7 +22,7 @@ body {
             function loadMapScenario() {
                 var map = new Microsoft.Maps.Map(document.getElementById("myMap"), {});
                 Microsoft.Maps.loadModule("Microsoft.Maps.GeoXml", function () {
-                    var layer = new Microsoft.Maps.GeoXmlLayer("http://public.cranfield.ac.uk/ss01shh/SDI/25k.kml");
+                    var layer = new Microsoft.Maps.GeoXmlLayer("https://rendzina.github.io/kmz/25k.kmz");
                     map.layers.insert(layer);
                 });
                 var map = new Microsoft.Maps.Map(document.getElementById("myMap"), {
