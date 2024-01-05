@@ -1,0 +1,70 @@
+/*****
+/ Example CSS Document - Print version
+*/
+
+body {
+  font-family: Times, serif;
+  font-size: 12px;
+  text-align: justify;
+  background: none;
+  }
+
+/* Lose nav menus */
+.noprint, #header, #sidebar, #footer {
+  display: none;
+  }
+
+#content {
+  padding: 30px;
+  }
+
+abbr, acronym, a:link, a:visited {
+  color: blue;
+  text-decoration: underline;
+  }
+
+/* Won't work on all browsers */
+#content a:link:after, #content a:visited:after {
+  content: " (" attr(href) ") ";
+  }
+
+/* Zap decoration - revert to plain text */
+.drop {
+  }
+
+th, td {
+  border: 1px solid #999;
+  padding: 10px;
+  }
+
+caption, th {
+  font-family: Times, serif;
+  font-size: 15px;
+  font-weight: bold;
+  }
+
+.inset_box	 {
+  float: left;
+  font-family: Arial, sans-serif;
+  color: none;
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  background: none;
+  width: 30%;
+  }
+
+h1 {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  }  
+
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 14x;
+  font-style: Italic;
+  }  
+
+hr {
+  color: #999;
+  }

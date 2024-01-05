@@ -1,0 +1,200 @@
+/*****
+/ Example CSS Document - Screen version
+*/
+
+/* Screen partitions */
+#header {
+  padding: 5px;
+  }
+
+#content {
+  float: right;
+  padding: 5px;
+  width: 90%;
+  }
+
+#sidebar {
+  padding: 5px;
+  margin-right: 90%;
+  background: #eee;
+  }
+
+#footer {
+  clear: right;
+  padding: 5px;
+  }
+
+/***************************/
+
+/* Side Menu definition */
+#sidetabs {
+  margin: 0;
+  padding: 0 0 20px 0;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  border-right: 1px solid #ffcc00;
+  }
+
+#sidetabs li {
+  margin: 0;
+  padding: 0;
+  display: inline;
+  list-style-type: none;
+  }
+
+#sidetabs a {
+  line-height: 30px;
+  font-weight: bold;
+  margin: 0 10px 4px 10px;
+  text-decoration: none;
+  color: #ffcc00;
+  }
+
+#sidetabs a.active, #sidetabs a:hover {
+  border-top: 2px solid #696;
+  border-bottom: 4px solid #696;
+  padding-bottom: 2px;
+  color: #363;
+  }
+
+/***************************/
+
+/* Top Menu definition */
+#minitabs {
+  margin: 0;
+  padding: 0 0 20px 0;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  border-bottom: 1px solid #ffcc00;
+  }
+
+#minitabs li {
+  margin: 0;
+  padding: 0;
+  display: inline;
+  list-style-type: none;
+  }
+
+#minitabs a {
+  float: right;
+  line-height: 14px;
+  font-weight: bold;
+  margin: 0 10px 4px 10px;
+  text-decoration: none;
+  color: #ffcc00;
+  }
+
+#minitabs a.active, #minitabs a:hover {
+  border-bottom: 4px solid #696;
+  padding-bottom: 2px;
+  color: #363;
+  }
+
+/***************************/
+
+/* Table definitions */
+
+table {
+  border-collapse: collapse;
+  }
+  
+tbody {
+  color: #999;
+  } 
+  
+th, td {
+  border: 1px solid #999;
+  padding: 10px;
+  }
+
+caption, th {
+  font-family: Verdana, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #696;
+  color: white;
+  }
+
+/***************************/
+
+/* General text decorations */
+
+/* Drop capital - decorative effect */
+.drop {
+  float: left;
+  font-family: Verdana, sans-serif;
+  font-size: 450%;
+  line-height: 1em;
+  margin: 4px 10px 10px 0;
+  padding: 4px 10px;
+  border: 2px solid #ccc;
+  background: #eee;
+  }
+
+/* Inset box */
+.inset_box	 {
+  float: right;
+  font-family: Arial, sans-serif;
+  font-weight: Bold;
+  color: #999;
+  margin: 10px, 5px, -2.5px, 10px;
+  padding: 5px;
+  border: 2px solid #ccc;
+  background: #eee;
+  width: 30%;
+  }
+
+/* General body text definition */
+body {
+  font-family: Georgia, Times, serif;
+  line-height: 1.3em;
+  font-size: 15px;
+  text-align: justify;
+  display: block;
+  }
+
+.noprint {
+  font-size: 20px;
+  color: "#FF3333";
+  }
+
+/* All link colours */
+a:link, a:vlink, a:hlink, a:alink {
+  color: #ffcc00;
+  }
+
+/* Headings */
+h1 {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-variant: small-caps;
+  letter-spacing: 4px;
+  color: #ffffdd;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: #ffcc00;  
+  }  
+
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 14x;
+  font-style: Italic;
+  color: #ffff99;
+  padding: 0;
+  background-color: #ffcc00;  
+  }  
+
+/* Horizontal rule */
+hr {
+  display: inline;
+  color: #ffff99;
+  }
+
+/* Abbreviations & Acronyms */
+abbr, acronym {
+  border-bottom: 1px dotted;
+  font-weight: Bold;
+  cursor: help;
+  color: #ffcc00;
+  }

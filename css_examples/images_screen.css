@@ -1,0 +1,159 @@
+/*****
+/ Example Image Replacement CSS Document - Screen version
+*/
+
+/* Screen partitions */
+#header {
+  padding: 5px;
+  }
+
+#content {
+  float: right;
+  padding: 5px;
+  width: 85%;
+  }
+
+#sidebar {
+  padding: 5px;
+  margin-right: 85%;
+  background: #eee;
+  }
+
+/***************************/
+
+/* Side Menu definition */
+#sidetabs {
+  margin: 0;
+  padding: 0 0 0px 0;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  border-right: 1px solid #ffcc00;
+  }
+
+#sidetabs li {
+  list-style: none; /* turn off bullets */
+  }
+
+#sidetabs li ul {
+  margin: 0;
+  padding: 0;
+  font-size: 70%;  
+  display: inline;
+  list-style: none;
+  }
+
+#sidetabs a {
+  line-height: 5%;
+  margin: 0 10px 4px 10px;
+  text-decoration: none;
+  padding-left: 20px;
+  color: #white;
+  background: url(bullet.gif) no-repeat 0 50%;
+  }
+
+#sidetabs a.active, #sidetabs a:hover {
+  border-top: 2px solid #696;
+  border-bottom: 4px solid #696;
+  padding-bottom: 2px;
+  color: #363;
+  }
+
+/***************************/
+
+/* Top Menu definition */
+#minitabs {
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  list-style: none;
+  display: inline;
+  overflow: hidden;
+  border-bottom: 1px solid #696;
+  }
+
+#minitabs li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline;
+  }
+
+#minitabs a {
+  float: right;
+  padding: 20px 0 0 0;
+  overflow: hidden;
+  height: 0px !important;
+  height /**/:20px; /* for IE5/Win only */
+  }
+
+#minitabs a:hover {
+  background-position: 0 -20px;
+  }
+
+#minitabs a:active, #minitabs a.selected {
+  background-position: 0 -40px;
+  }
+
+#m_plums a {
+  width: 90px;
+  background: url(plums.gif) top left no-repeat;
+  }
+
+#m_lemons a {
+  width: 90px;
+  background: url(lemons.gif) top left no-repeat;
+  }
+
+#m_pears a {
+  width: 90px;
+  background: url(pears.gif) top left no-repeat;
+  }
+
+#m_oranges a {
+  width: 90px;
+  background: url(oranges.gif) top left no-repeat;
+  }
+
+#m_apples a {
+  width: 90px;
+  background: url(apples.gif) top left no-repeat;
+  }
+  
+/***************************/
+
+/* General body text definition */
+body {
+  font-family: Georgia, Times, serif;
+  line-height: 1.3em;
+  font-size: 15px;
+  text-align: justify;
+  display: block;
+  }
+
+/* All link colours */
+a:link, a:vlink, a:hlink, a:alink {
+  color: #ffcc00;
+  }
+
+/* Headings */
+h1 {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-variant: small-caps;
+  letter-spacing: 4px;
+  color: #ffffdd;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: #ffcc00;  
+  }  
+
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 14x;
+  font-style: Italic;
+  color: #ffff99;
+  padding: 0;
+  background-color: #ffcc00;  
+  }  
+
+/* End of file */
