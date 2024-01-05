@@ -12,7 +12,7 @@ function init() {
 	ol.proj.proj4.register(proj4);
 	//var imageExtent = [0, 0, 700000, 1300000]; // whole GB
 	var imageExtent = [520000, 150000, 560000, 190000];
-	// We are aiming at approx centerpoint of 532631, 165230
+	// We are aiming at an approx centerpoint of 532631, 165230 OSGB
 
 	var options = {
 		layers: [
@@ -30,7 +30,7 @@ function init() {
 
 	map = new ol.Map(options);
 	
-  // Remember to edit the settings below
+  // Remember to edit the server settings below
 	var wmsSource = new ol.source.ImageWMS({
 		url: 'http://50cr004.sims.cranfield.ac.uk:8080/geoserver/wms',
 		params: {

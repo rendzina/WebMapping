@@ -11,7 +11,7 @@
   crossorigin async
   data-callback="initMapKit"
   data-libraries="map,annotations,services"
-  data-initial-token="eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjY2TURRMzVNNDUifQ.eyJpc3MiOiI3RDdaNU1ROTVEIiwiaWF0IjoxNjc0ODkzNzY4LCJleHAiOjE3MDYzMTM2MDB9.dWM2fBMXd8_n-Lhg6PZiv_38lBdw2ZfnRM-FBdmB_XaLuYswS1grhOPbve0ADJjcrw895R5T7wLztGsZG-2suw"
+  data-initial-token="<YOUR-API-KEY-HERE>"
 ></script>
 <style>
 #map {
@@ -33,7 +33,7 @@ const setupMapKitJs = async() => {
         // Clean up
         delete window.initMapKit;
     }
-    const tokenID = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjY2TURRMzVNNDUifQ.eyJpc3MiOiI3RDdaNU1ROTVEIiwiaWF0IjoxNjc0ODkzNzY4LCJleHAiOjE3MDYzMTM2MDB9.dWM2fBMXd8_n-Lhg6PZiv_38lBdw2ZfnRM-FBdmB_XaLuYswS1grhOPbve0ADJjcrw895R5T7wLztGsZG-2suw";
+    const tokenID = "<YOUR-API-KEY-HERE>";
     mapkit.init({
         authorizationCallback: function(done) {
             done(tokenID);
