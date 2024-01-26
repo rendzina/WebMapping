@@ -2,7 +2,7 @@
 <html>
 <!-- A1136 Web Mapping: Note all the comments in the code -->
 <head>
-<title>Google web map showing pixel and tile coordinates</title>
+<title>A1136 Web Mapping: Google web map showing pixel and tile coordinates</title>
 <meta name="viewport" content="initial-scale=1.0">
 <meta charset="utf-8">
 <style>
@@ -20,6 +20,7 @@ html, body {
 </style>
 </head>
 <body>
+<h1>A1136 Web Mapping: Google web map showing pixel and tile coordinates</h1>
 <div id="map"></div>
 <script>
       function initMap() {
@@ -81,7 +82,7 @@ html, body {
             TILE_SIZE * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI)));
       }
     </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=<YOUR_API_HERE>&callback=initMap"
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=<YOUR_API_HERE>&callback=initMap"
     async defer></script>
 </body>
 </html>
