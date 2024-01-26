@@ -3,7 +3,7 @@ A1136 Web Mapping: Cascading Style Sheets - some examples
 
 Cascading Style Sheets - often underused, often misunderstood! An extremely powerful means to control the visual interface of your web pages. It's always easier to show some examples of how things work - so here goes! Also there are Blackboard links to lots of web sites that will help you understand the world of CSS. One in particular is http://www.csszengarden.com/.
 
-So, in this zip file there are two html files, each showing a different aspect of CSS. Lets start with:
+In this fileset there are two html files, each showing a different aspect of CSS. Lets start with:
 
 Web1.htm
 --------
