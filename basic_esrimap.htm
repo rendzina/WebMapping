@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <html>
 <!-- A1136 Web Mapping: Note all the comments in the code -->
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>ArcGIS API for JavaScript Tutorials: Display a map</title>
+<title>ArcGIS API for JavaScript Tutorials: Display a map test</title>
 <style>
 html, body, #viewDiv {
     padding: 0;
@@ -13,8 +12,9 @@ html, body, #viewDiv {
     width: 100%;
 }
 </style>
-<link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
-<script src="https://js.arcgis.com/4.25/"></script>
+<link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+<script src="https://js.arcgis.com/4.28/"> </script>
+
 <script>
 require(["esri/config", "esri/Map", "esri/views/MapView","esri/layers/FeatureLayer"], function (esriConfig,Map, MapView, FeatureLayer) {
 
@@ -29,7 +29,29 @@ require(["esri/config", "esri/Map", "esri/views/MapView","esri/layers/FeatureLay
     zoom: 13, // Zoom level
     container: "viewDiv" // Div element
   });
-});
+
+//Trailheads feature layer (points)
+  const trailheadsLayer = new FeatureLayer({
+    url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads/FeatureServer/0"
+  });
+
+  map.add(trailheadsLayer);
+
+//Trails feature layer (lines)
+const trailsLayer = new FeatureLayer({
+    url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trails/FeatureServer/0"
+  });
+
+  map.add(trailsLayer, 0);
+
+// Parks and open spaces (polygons)
+  const parksLayer = new FeatureLayer({
+    url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Parks_and_Open_Space/FeatureServer/0"
+  });
+
+  map.add(parksLayer, 0);  
+  });
+
 </script>
 </head>
 <body>
