@@ -34,7 +34,7 @@ function init() {
 	var wmsSource = new ol.source.ImageWMS({
 		url: 'http://50cr004.sims.cranfield.ac.uk:8080/geoserver/wms',
 		params: {
-			'LAYERS': 'WM:Croydon_POI'
+			'LAYERS': 'SDI:Croydon_POI'
 		},
 		serverType: 'geoserver',
 		crossOrigin: null // see https://gis.stackexchange.com/questions/113693/openlayers-3-cross-origin-request-blocked-the-same-origin-policy-disallows
