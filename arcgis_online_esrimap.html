@@ -1,55 +1,125 @@
-<html>
+<!DOCTYPE html>
 <!-- A1136 Web Mapping: Note all the comments in the code -->
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>ArcGIS API for JavaScript Tutorials: Display a web map</title>
-<link rel="stylesheet" href="https://js.arcgis.com/4.31/esri/themes/light/main.css">
-<script src="https://js.arcgis.com/4.31/"></script>
-<style>
-html, body, #viewDiv {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    width: 100%;
-}
-</style>
-<script>
-		require([
-		  "esri/config",
-		  "esri/WebMap",
-		  "esri/views/MapView",
-		  "esri/widgets/ScaleBar",
-		  "esri/widgets/Legend"
-		], function(esriConfig, WebMap, MapView, ScaleBar, Legend) {
-
-			// Code to create the map and view will go here
-			esriConfig.apiKey = "YOUR_API_KEY";
-
-			const webmap = new WebMap({
-			portalItem: {
-			  id: "6dd6de84899941ccb32a2f30cdcea672"
-				}
-			});
-
-			const view = new MapView({
-					container: "viewDiv",
-					map: webmap
-			});
-
-			const scalebar = new ScaleBar({
-				view: view
-			});
-
-			view.ui.add(scalebar, "bottom-left");
-			const legend = new Legend ({
-					view: view
-				  });
-			view.ui.add(legend, "top-right");
-	  });
-	</script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="ArcGIS Online web map example with scale bar and legend" />
+    <title>ArcGIS API for JavaScript: Web Map Example</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://js.arcgis.com/4.31/esri/themes/light/main.css" as="style">
+    <link rel="preload" href="https://js.arcgis.com/4.31/" as="script">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.31/esri/themes/light/main.css">
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        #viewDiv {
+            height: 100%;
+            width: 100%;
+        }
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: none;
+        }
+        .loading.active {
+            display: block;
+        }
+        .error-message {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
-<div id="viewDiv"></div>
+    <header>
+        <h1>Web Map Example</h1>
+    </header>
+    
+    <main>
+        <div id="viewDiv" role="application" aria-label="Interactive map"></div>
+        <div class="loading" id="loadingIndicator">Loading map...</div>
+        <div class="error-message" id="errorMessage"></div>
+    </main>
+
+    <noscript>
+        <p>This application requires JavaScript to be enabled in your browser.</p>
+    </noscript>
+
+    <script>
+        // Load configuration from environment
+        const config = {
+            apiKey: process.env.ARCGIS_API_KEY || 'YOUR_API_KEY',
+            portalItemId: '6dd6de84899941ccb32a2f30cdcea672'
+        };
+
+        // Show loading indicator
+        document.getElementById('loadingIndicator').classList.add('active');
+
+        require([
+            "esri/config",
+            "esri/WebMap",
+            "esri/views/MapView",
+            "esri/widgets/ScaleBar",
+            "esri/widgets/Legend"
+        ], function(esriConfig, WebMap, MapView, ScaleBar, Legend) {
+            try {
+                esriConfig.apiKey = config.apiKey;
+
+                const webmap = new WebMap({
+                    portalItem: {
+                        id: config.portalItemId
+                    }
+                });
+
+                const view = new MapView({
+                    container: "viewDiv",
+                    map: webmap
+                });
+
+                // Add scale bar
+                const scalebar = new ScaleBar({
+                    view: view
+                });
+                view.ui.add(scalebar, "bottom-left");
+
+                // Add legend
+                const legend = new Legend({
+                    view: view
+                });
+                view.ui.add(legend, "top-right");
+
+                // Hide loading indicator when map is ready
+                view.when(() => {
+                    document.getElementById('loadingIndicator').classList.remove('active');
+                });
+
+            } catch (error) {
+                console.error('Error initializing map:', error);
+                document.getElementById('loadingIndicator').classList.remove('active');
+                document.getElementById('errorMessage').textContent = 'Error loading map. Please try again later.';
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
